@@ -1,7 +1,12 @@
 import dotenv from 'dotenv';
-dotenv.config();
+import { join } from 'path';
+import { TVariables } from '../types';
 
-export const config = {
-    port: process.env.PORT,
-    base_url: process.env.BASE_URL,
-}
+dotenv.config({ path: join(__dirname, '../', `.env.${process.env.NODE_ENV}`) });
+
+export const config: TVariables = {
+    api: {
+        port: ( process.env.PORT ? +process.env.PORT : 3000 ),
+        baseUrl: process.env.BASE_URL || '',
+    }
+};

@@ -1,6 +1,7 @@
 import express, { Application } from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
+import color from 'colors';
 
 import { userRouter } from '../routes';
 import { RoutesType } from '../types';
@@ -8,18 +9,18 @@ import { config } from '../config';
 
 class Server {
 
-    private app:      Application;
-    private port:     string;
-    private baseUrl:  string ;
+    private app: Application;
+    private port: number;
+    private baseUrl: string ;
     private apiPaths: RoutesType;
 
     constructor() {
         this.app = express();
-        this.port = config.port || '7997';
-        this.baseUrl = config.base_url || '/api/v1';
+        this.port = config.api.port || 3000;
+        this.baseUrl = config.api.baseUrl || '/api/v1';
         this.apiPaths = {
             users: `${ this.baseUrl }/users`,
-        }
+        };
 
         //* Middlewares: 
         this.middlewares();
@@ -50,7 +51,7 @@ class Server {
 
     listen() {
         this.app.listen( this.port, () => {
-            console.log(`Servidor corriendo en puerto: ${ this.port }`);
+            console.log('Servidor corriendo en puerto: '.underline.cyan, color.bgCyan.white(String(this.port)));
         });
     }
 

@@ -30,7 +30,8 @@ export const putUser = ( req: Request, resp: Response ) => {
     
     resp.json({
         msg: 'putUser',
-        body
+        body,
+        id
     });
 };
 
