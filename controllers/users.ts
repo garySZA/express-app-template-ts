@@ -1,45 +1,45 @@
 import { Request, Response } from 'express';
 
-export const getUsers = ( req: Request, resp: Response ) => {
+export const getUsers = (req: Request, resp: Response) => {
     resp.json({
-        msg: 'getUsers'
+        msg: 'getUsers',
     });
 };
 
-export const getUser = ( req: Request, resp: Response ) => {
+export const getUser = (req: Request, resp: Response) => {
     const { id } = req.params;
-    
+
     resp.json({
         msg: 'getUser',
-        id
+        id,
     });
 };
 
-export const postUser = ( req: Request, resp: Response ) => {
+export const postUser = (req: Request, resp: Response) => {
     const { body } = req;
-    
+
     resp.json({
         msg: 'postUser',
-        body
+        body,
     });
 };
 
-export const putUser = ( req: Request, resp: Response ) => {
+export const putUser = (req: Request, resp: Response) => {
     const { id } = req.params;
     const { body } = req;
-    
+
     resp.json({
         msg: 'putUser',
         body,
-        id
+        id,
     });
 };
 
-export const deleteUser = ( req: Request, resp: Response ) => {
+export const deleteUser = (req: Request, resp: Response) => {
     const { id } = req.params;
-    
+
     resp.json({
         msg: 'deleteUser',
-        id
+        id,
     });
 };
